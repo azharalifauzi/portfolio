@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/navbar.vue';
+import Home from '../features/home/index.vue';
+---
+
+<Layout title="Azhar Ali Fauzi | Not a Regular Front End Developer">
+  <Home client:only="vue">
+    <Navbar />
+  </Home>
+</Layout>

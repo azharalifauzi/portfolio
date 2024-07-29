@@ -57,11 +57,13 @@ const techStacks = [
 </script>
 
 <template>
-  <section class="max-w-4xl mx-auto pt-32 pb-20 px-6">
+  <section
+    class="max-w-4xl mx-auto md:pt-32 pt-24 md:pb-20 pb-12 px-6 md:pl-24 lg:pl-6"
+  >
     <div class="max-w-[575px]">
       <h1
         v-motion
-        class="text-[64px] leading-[1.1] font-semibold mb-6"
+        class="md:text-[64px] text-4xl leading-[1.1] font-semibold mb-6"
         :initial="{ opacity: 0, y: -20 }"
         :enter="{ opacity: 1, y: 0 }"
         :duration="300"
@@ -70,7 +72,7 @@ const techStacks = [
       </h1>
       <p
         v-motion
-        class="text-xl mb-6"
+        class="md:text-xl mb-6"
         :initial="{ opacity: 0, y: -20 }"
         :enter="{ opacity: 1, y: 0 }"
         :duration="300"
@@ -83,7 +85,7 @@ const techStacks = [
       <a
         v-motion
         href="https://certifast.co"
-        class="flex items-center text-xl font-semibold gap-1 hover:text-blue-300 transition-colors duration-200"
+        class="flex items-center md:text-xl text-lg font-semibold gap-1 hover:text-blue-300 transition-colors duration-200"
         target="_blank"
         rel="noopener noreferrer"
         :initial="{ opacity: 0, y: -20 }"
@@ -97,7 +99,7 @@ const techStacks = [
     </div>
     <div
       v-motion
-      class="mt-14"
+      class="md:mt-14 mt-8"
       :initial="{ opacity: 0, y: -20 }"
       :enter="{ opacity: 1, y: 0 }"
       :duration="300"
@@ -110,18 +112,20 @@ const techStacks = [
       />
     </div>
   </section>
-  <section class="max-w-4xl mx-auto py-20 px-6">
-    <div class="mb-20">
-      <h2 class="text-4xl font-semibold mb-6">The Goal of the Project</h2>
+  <section class="max-w-4xl mx-auto md:py-20 py-12 px-6 md:pl-24 lg:pl-6">
+    <div class="md:mb-20 mb-12">
+      <h2 class="md:text-4xl text-2xl font-semibold mb-6">
+        The Goal of the Project
+      </h2>
       <p class="text-lg">
         Our goal is to build an easy way to generate design in bulk that can be
         accessed easily for everyone through the web, while the certificate
         generation has to be run on client side to minimize cost.
       </p>
     </div>
-    <div class="mb-20">
-      <h2 class="text-4xl font-semibold mb-6">Main Challenges</h2>
-      <ul class="grid grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
+    <div class="md:mb-20 mb-12">
+      <h2 class="md:text-4xl text-2xl font-semibold mb-6">Main Challenges</h2>
+      <ul class="grid md:grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
         <li>
           We have to build a design editor with great UX on the web like Canva
           or Figma, so it has to be very intuitive for our users to use it.
@@ -142,8 +146,8 @@ const techStacks = [
       </ul>
     </div>
     <div>
-      <h2 class="text-4xl font-semibold mb-6">The Solutions</h2>
-      <ul class="grid grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
+      <h2 class="md:text-4xl text-2xl font-semibold mb-6">The Solutions</h2>
+      <ul class="grid md:grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
         <li>
           We picked the most essential feature from Canva and Figma and mixed
           it. We have an infinity canvas and right sidebar like Figma while we
@@ -165,9 +169,14 @@ const techStacks = [
       </ul>
     </div>
   </section>
-  <section class="py-40 pr-6 pl-24 bg-gray-900 text-white" data-inverse="true">
+  <section
+    class="md:py-40 py-20 pr-6 md:pl-24 pl-6 bg-gray-900 text-white"
+    data-inverse="true"
+  >
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 mb-44 items-center gap-20">
+      <div
+        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
+      >
         <div class="min-h-[300px] flex items-center">
           <video class="bg-gray-200" autoplay loop muted>
             <source
@@ -178,25 +187,29 @@ const techStacks = [
           </video>
         </div>
         <div>
-          <h2 class="text-4xl font-semibold mb-6">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
             Intuitive Item interaction
           </h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             Effortlessly drag, resize, and rotate items to create your perfect
             certificate design. Full control over every element makes
             customization easy.
           </p>
         </div>
       </div>
-      <div class="grid grid-cols-2 mb-44 items-center gap-20">
-        <div>
-          <h2 class="text-4xl font-semibold mb-6">Simplified Text Editing</h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+      <div
+        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
+      >
+        <div class="order-2 md:order-1">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
+            Simplified Text Editing
+          </h2>
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             Enjoy a seamless experience adding, modifying, and formatting text
             with advanced tools for hassle-free flexibility.
           </p>
         </div>
-        <div class="min-h-[300px] flex items-center">
+        <div class="min-h-[300px] flex items-center order-1">
           <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/2.webm"
@@ -206,7 +219,9 @@ const techStacks = [
           </video>
         </div>
       </div>
-      <div class="grid grid-cols-2 mb-44 items-center gap-20">
+      <div
+        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
+      >
         <div class="min-h-[300px] flex items-center">
           <video class="bg-gray-200" autoplay loop muted>
             <source
@@ -217,17 +232,23 @@ const techStacks = [
           </video>
         </div>
         <div>
-          <h2 class="text-4xl font-semibold mb-6">Tailored Customization</h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
+            Tailored Customization
+          </h2>
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             Customize every detail from fonts to colors. Create unique
             certificates that reflect your style and specifications.
           </p>
         </div>
       </div>
-      <div class="grid grid-cols-2 mb-44 items-center gap-20">
-        <div>
-          <h2 class="text-4xl font-semibold mb-6">Preview Before Spending</h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+      <div
+        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
+      >
+        <div class="order-2 md:order-1">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
+            Preview Before Spending
+          </h2>
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             Use the new preview feature to see your certificate with all
             customizations before spending credits, ensuring satisfaction before
             finalizing.asy.
@@ -243,7 +264,9 @@ const techStacks = [
           </video>
         </div>
       </div>
-      <div class="grid grid-cols-2 mb-44 items-center gap-20">
+      <div
+        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
+      >
         <div class="min-h-[300px] flex items-center">
           <video class="bg-gray-200" autoplay loop muted>
             <source
@@ -254,21 +277,21 @@ const techStacks = [
           </video>
         </div>
         <div>
-          <h2 class="text-4xl font-semibold mb-6">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
             Fast Certificate Generation
           </h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             Generate high-quality certificates in seconds with efficient
             processing for quick and reliable service every time.
           </p>
         </div>
       </div>
-      <div class="grid grid-cols-2 items-center gap-20">
-        <div>
-          <h2 class="text-4xl font-semibold mb-6">
+      <div class="grid md:grid-cols-2 items-center gap-x-20 gap-y-6">
+        <div class="order-2 md:order-1">
+          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
             Top-Quality Service with Credits
           </h2>
-          <p class="text-gray-400 text-lg max-w-[500px]">
+          <p class="text-gray-400 md:text-lg max-w-[500px]">
             The new credit system offers a wide range of design features and
             ensures high-quality service. Purchase credits easily within the
             platform for stunning certificates.
@@ -286,8 +309,8 @@ const techStacks = [
       </div>
     </div>
   </section>
-  <section class="max-w-6xl mx-auto py-20 px-6">
-    <h2 class="text-4xl font-semibold mb-12 text-center">
+  <section class="max-w-6xl mx-auto py-20 px-6 md:pl-24 lg:pl-6">
+    <h2 class="md:text-4xl text-2xl font-semibold mb-12 text-center">
       What People Said about Certifast
     </h2>
     <div
@@ -358,26 +381,26 @@ const techStacks = [
       </a>
     </div>
   </section>
-  <section class="max-w-4xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-semibold mb-10 leading-tight">
+  <section class="max-w-4xl mx-auto px-6 md:py-20 py-12 md:pl-24 lg:pl-6">
+    <h2 class="md:text-4xl text-2xl font-semibold mb-10 leading-tight">
       Secret Ingredients
     </h2>
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 grid-cols-2 gap-6">
       <div
         v-for="techStack in techStacks"
         :key="techStack.name"
         class="flex items-center gap-3"
       >
         <img :src="techStack.icon" :alt="techStack.name" />
-        <span>{{ techStack.name }}</span>
+        <span class="md:text-base text-xs">{{ techStack.name }}</span>
       </div>
     </div>
   </section>
-  <section class="max-w-4xl mx-auto px-6 pt-20">
-    <h2 class="text-4xl font-semibold mb-6 leading-tight">
+  <section class="max-w-4xl mx-auto px-6 pt-20 md:pl-24 lg:pl-6">
+    <h2 class="md:text-4xl text-2xl font-semibold mb-6 leading-tight">
       The Result: Over 6 Million Certificates Generated and Counting
     </h2>
-    <p class="text-xl">
+    <p class="md:text-xl">
       Certifast has become widely used and quite successful. From the launch at
       2021 until now it’s been used by 150k unique users and has around 5k
       monthly active users with more than 6 Million certificates has been

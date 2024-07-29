@@ -254,7 +254,7 @@ const techStacks = [
             finalizing.asy.
           </p>
         </div>
-        <div class="min-h-[300px] flex items-center">
+        <div class="min-h-[300px] flex items-center order-1">
           <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/4.webm"
@@ -297,7 +297,7 @@ const techStacks = [
             platform for stunning certificates.
           </p>
         </div>
-        <div class="min-h-[300px] flex items-center">
+        <div class="min-h-[300px] flex items-center order-1">
           <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/6.webm"

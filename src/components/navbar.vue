@@ -1,27 +1,26 @@
 <script setup lang="ts">
+import { useEventListener } from '@vueuse/core';
 import { Github } from 'lucide-vue-next';
 
-defineOptions({
-  name: 'Navbar',
-});
+useEventListener('scroll', () => {});
 </script>
 
 <template>
   <nav
-    class="flex justify-between items-center py-6 px-10 fixed h-full flex-col"
+    class="flex justify-between items-center py-12 px-6 fixed h-full flex-col"
   >
     <ul class="flex items-center gap-12 list rotate-180">
       <li class="font-medium">
-        <a href="#project">Project</a>
+        <a href="/#project">Project</a>
       </li>
       <li class="font-medium">
-        <a href="#experiences">Experiences</a>
+        <a href="/#experiences">Experiences</a>
       </li>
       <li class="font-medium">
-        <a href="#about">About</a>
+        <a href="/#about">About</a>
       </li>
       <li>
-        <div class="rotate-90 font-bold text-xl cursor-default">AAF</div>
+        <a class="rotate-90 font-bold text-xl block" href="/">AAF</a>
       </li>
     </ul>
     <div>

@@ -5,7 +5,8 @@ import Home from '../features/home/index.vue';
 ---
 
 <Layout title="Azhar Ali Fauzi | Not a Regular Front End Developer">
-  <Home client:only="vue">
+  <main>
     <Navbar />
-  </Home>
+    <Home client:only="vue" />
+  </main>
 </Layout>

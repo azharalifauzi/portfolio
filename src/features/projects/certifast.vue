@@ -59,25 +59,50 @@ const techStacks = [
 <template>
   <section class="max-w-4xl mx-auto pt-32 pb-20 px-6">
     <div class="max-w-[575px]">
-      <h1 class="text-[64px] leading-[1.1] font-semibold mb-6">
+      <h1
+        v-motion
+        class="text-[64px] leading-[1.1] font-semibold mb-6"
+        :initial="{ opacity: 0, y: -20 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :duration="300"
+      >
         Professional Certificate Maker
       </h1>
-      <p class="text-xl mb-6">
+      <p
+        v-motion
+        class="text-xl mb-6"
+        :initial="{ opacity: 0, y: -20 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :duration="300"
+        :delay="300"
+      >
         <strong> Certifast </strong>
         is a free design tool that is specifically built to generate design in
         bulks. I worked on this project as a sole creator from design to dev.
       </p>
       <a
+        v-motion
         href="https://certifast.co"
-        class="flex items-center text-xl font-semibold gap-1"
+        class="flex items-center text-xl font-semibold gap-1 hover:text-blue-300 transition-colors duration-200"
         target="_blank"
         rel="noopener noreferrer"
+        :initial="{ opacity: 0, y: -20 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :duration="300"
+        :delay="600"
       >
         <ChevronRight />
         Visit website
       </a>
     </div>
-    <div class="mt-14">
+    <div
+      v-motion
+      class="mt-14"
+      :initial="{ opacity: 0, y: -20 }"
+      :enter="{ opacity: 1, y: 0 }"
+      :duration="300"
+      :delay="900"
+    >
       <img
         :src="CertifastPrview"
         alt="Certifast"
@@ -140,11 +165,11 @@ const techStacks = [
       </ul>
     </div>
   </section>
-  <section class="py-40 px-6 bg-gray-900 text-white" data-inverse="true">
+  <section class="py-40 pr-6 pl-24 bg-gray-900 text-white" data-inverse="true">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 mb-44 items-center gap-20">
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/1.webm"
               type="video/webm"
@@ -156,7 +181,7 @@ const techStacks = [
           <h2 class="text-4xl font-semibold mb-6">
             Intuitive Item interaction
           </h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             Effortlessly drag, resize, and rotate items to create your perfect
             certificate design. Full control over every element makes
             customization easy.
@@ -166,13 +191,13 @@ const techStacks = [
       <div class="grid grid-cols-2 mb-44 items-center gap-20">
         <div>
           <h2 class="text-4xl font-semibold mb-6">Simplified Text Editing</h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             Enjoy a seamless experience adding, modifying, and formatting text
             with advanced tools for hassle-free flexibility.
           </p>
         </div>
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/2.webm"
               type="video/webm"
@@ -182,8 +207,8 @@ const techStacks = [
         </div>
       </div>
       <div class="grid grid-cols-2 mb-44 items-center gap-20">
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/3.webm"
               type="video/webm"
@@ -193,7 +218,7 @@ const techStacks = [
         </div>
         <div>
           <h2 class="text-4xl font-semibold mb-6">Tailored Customization</h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             Customize every detail from fonts to colors. Create unique
             certificates that reflect your style and specifications.
           </p>
@@ -202,14 +227,14 @@ const techStacks = [
       <div class="grid grid-cols-2 mb-44 items-center gap-20">
         <div>
           <h2 class="text-4xl font-semibold mb-6">Preview Before Spending</h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             Use the new preview feature to see your certificate with all
             customizations before spending credits, ensuring satisfaction before
             finalizing.asy.
           </p>
         </div>
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/4.webm"
               type="video/webm"
@@ -219,8 +244,8 @@ const techStacks = [
         </div>
       </div>
       <div class="grid grid-cols-2 mb-44 items-center gap-20">
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/5.webm"
               type="video/webm"
@@ -232,7 +257,7 @@ const techStacks = [
           <h2 class="text-4xl font-semibold mb-6">
             Fast Certificate Generation
           </h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             Generate high-quality certificates in seconds with efficient
             processing for quick and reliable service every time.
           </p>
@@ -243,14 +268,14 @@ const techStacks = [
           <h2 class="text-4xl font-semibold mb-6">
             Top-Quality Service with Credits
           </h2>
-          <p class="text-gray-500 text-lg max-w-[500px]">
+          <p class="text-gray-400 text-lg max-w-[500px]">
             The new credit system offers a wide range of design features and
             ensures high-quality service. Purchase credits easily within the
             platform for stunning certificates.
           </p>
         </div>
-        <div class="bg-gray-200 min-h-[300px]">
-          <video autoplay loop muted>
+        <div class="min-h-[300px] flex items-center">
+          <video class="bg-gray-200" autoplay loop muted>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/6.webm"
               type="video/webm"
@@ -324,7 +349,7 @@ const techStacks = [
     </div>
     <div class="flex justify-center mt-16">
       <a
-        class="border border-gray-300 px-8 py-3"
+        class="border border-gray-300 px-8 py-3 hover:bg-gray-100 transition-colors duration-400"
         href="https://karyakarsa.com/azharalifauzi/certifast"
         target="_blank"
         rel="noopener noreferrer"

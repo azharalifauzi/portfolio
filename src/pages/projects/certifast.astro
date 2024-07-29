@@ -1,12 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/navbar.vue';
 import CertifastFeature from '@/features/projects/certifast.vue';
 ---
 
-<Layout title="Azhar Ali Fauzi | Not a Regular Front End Developer">
-  <main>
-    <Navbar />
-    <CertifastFeature />
-  </main>
+<Layout title="Certifast Case Study">
+  <CertifastFeature client:only="vue" />
 </Layout>

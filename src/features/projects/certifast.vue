@@ -391,7 +391,13 @@ const techStacks = [
         :key="techStack.name"
         class="flex items-center gap-3"
       >
-        <img :src="techStack.icon" :alt="techStack.name" />
+        <img
+          :src="techStack.icon"
+          :alt="techStack.name"
+          :class="{
+            'mix-blend-darken': techStack.name === 'Tiptap',
+          }"
+        />
         <span class="md:text-base text-xs">{{ techStack.name }}</span>
       </div>
     </div>

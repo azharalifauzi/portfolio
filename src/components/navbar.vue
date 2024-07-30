@@ -208,5 +208,9 @@ watch(isOpen, (open) => {
 
 .nav-link {
   transition: color 300ms;
+
+  &:hover {
+    color: #a5d3f5 !important;
+  }
 }
 </style>

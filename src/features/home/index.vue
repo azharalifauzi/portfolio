@@ -4,7 +4,7 @@ import { HISTORY } from './constants';
 import CertifastPreview from './assets/certifast-preview.png?url';
 import { ref } from 'vue';
 import MouseScrollIndicator from './components/mouse-scroll-indicator.vue';
-import { ArrowRight } from 'lucide-vue-next';
+import { ArrowRight, ExternalLink } from 'lucide-vue-next';
 
 const notARegular = ref<HTMLElement>();
 const frontEndDev = ref<HTMLElement>();
@@ -155,16 +155,20 @@ const frontEndDevInstance = useMotion(frontEndDev, {
         >
           {{ h.title }}
         </div>
-        <div
+        <a
           v-motion
-          class="md:text-xl tracking-[0.12em] md:mb-8 mb-4"
+          class="md:text-xl tracking-[0.12em] md:mb-8 mb-4 flex items-center gap-2 hover:text-[#A5D3F5]"
+          target="_blank"
+          rel="noopener noreferrer"
+          :href="h.url"
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
           :delay="400"
         >
           {{ h.company }}
-        </div>
+          <ExternalLink class="h-5 w-5" />
+        </a>
         <div
           v-motion
           class="tracking-wider leading-normal md:text-lg text-sm"
@@ -173,7 +177,21 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :duration="300"
           :delay="800"
           v-html="h.description"
-        ></div>
+        />
+        <div class="flex items-center gap-3 mt-6 flex-wrap">
+          <div
+            v-motion
+            v-for="(techStack, i) in h.techStacks"
+            :key="techStack"
+            class="py-1 px-4 bg-gray-100 rounded-full md:text-sm text-xs text-gray-800"
+            :initial="{ opacity: 0, y: -20 }"
+            :visible-once="{ opacity: 1, y: 0 }"
+            :duration="300"
+            :delay="900 + i * 50"
+          >
+            {{ techStack }}
+          </div>
+        </div>
       </div>
     </div>
   </section>

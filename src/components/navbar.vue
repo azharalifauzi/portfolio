@@ -210,7 +210,7 @@ watch(isOpen, (open) => {
   transition: color 300ms;
 
   &:hover {
-    color: #a5d3f5 !important;
+    color: #78c0fa !important;
   }
 }
 </style>

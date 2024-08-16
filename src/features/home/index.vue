@@ -2,6 +2,7 @@
 import { useMotion } from '@vueuse/motion';
 import { HISTORY } from './constants';
 import CertifastPreview from './assets/certifast-preview.png?url';
+import EduCbtPreview from './assets/edu-cbt-preview.png?url';
 import { ref } from 'vue';
 import MouseScrollIndicator from './components/mouse-scroll-indicator.vue';
 import { ArrowRight, ExternalLink } from 'lucide-vue-next';
@@ -68,7 +69,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
         <div class="relative w-max">
           <div
             ref="notARegular"
-            class="absolute h-full w-full bg-[#A5D3F5] z-10"
+            class="absolute h-full w-full bg-[#78c0fa] z-10"
           />
           <span
             v-motion
@@ -83,7 +84,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
         <div class="relative w-max">
           <div
             ref="frontEndDev"
-            class="absolute h-full w-full bg-[#A5D3F5] z-10"
+            class="absolute h-full w-full bg-[#78c0fa] z-10"
           />
           <span
             v-motion
@@ -107,6 +108,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       :initial="{ opacity: 0, y: -70 }"
       :visible-once="{ opacity: 1, y: 0 }"
       :duration="500"
+      :delay="200"
     >
       ABOUT ME
     </div>
@@ -132,6 +134,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       :initial="{ opacity: 0, y: -70 }"
       :visible-once="{ opacity: 1, y: 0 }"
       :duration="500"
+      :delay="200"
     >
       HISTORY
     </div>
@@ -139,10 +142,10 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       <div v-for="h in HISTORY" :key="h.title" class="relative pl-12 h-screen">
         <div class="absolute top-3.5 left-0 h-full w-4">
           <div
-            class="absolute top-0 left-0 w-4 h-4 bg-[#A5D3F5] rounded-full"
+            class="absolute top-0 left-0 w-4 h-4 bg-[#78c0fa] rounded-full"
           />
           <div
-            class="absolute w-0.5 bg-[#A5D3F5] h-full left-1/2 -translate-x-1/2"
+            class="absolute w-0.5 bg-[#78c0fa] h-full left-1/2 -translate-x-1/2"
           ></div>
         </div>
         <div
@@ -151,20 +154,20 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :initial="{ opacity: 0, y: -30 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="200"
+          :delay="500"
         >
           {{ h.title }}
         </div>
         <a
           v-motion
-          class="md:text-xl tracking-[0.12em] md:mb-8 mb-4 flex items-center gap-2 hover:text-[#A5D3F5]"
+          class="md:text-xl tracking-[0.12em] md:mb-8 mb-4 flex items-center gap-2 hover:text-[#78c0fa]"
           target="_blank"
           rel="noopener noreferrer"
           :href="h.url"
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="400"
+          :delay="500"
         >
           {{ h.company }}
           <ExternalLink class="h-5 w-5" />
@@ -175,7 +178,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="800"
+          :delay="500"
           v-html="h.description"
         />
         <div class="flex items-center gap-3 mt-6 flex-wrap">
@@ -187,7 +190,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
             :initial="{ opacity: 0, y: -20 }"
             :visible-once="{ opacity: 1, y: 0 }"
             :duration="300"
-            :delay="900 + i * 50"
+            :delay="500 + i * 50"
           >
             {{ techStack }}
           </div>
@@ -205,6 +208,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       :initial="{ opacity: 0, y: -70 }"
       :visible-once="{ opacity: 1, y: 0 }"
       :duration="500"
+      :delay="200"
     >
       PROJECT
     </div>
@@ -228,7 +232,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="700"
+          :delay="500"
         >
           Certifast is a free design tool that is specifically built to generate
           design in bulks. Offering great user experience similar to modern
@@ -241,7 +245,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="1000"
+          :delay="500"
         >
           View project
           <ArrowRight />
@@ -256,8 +260,61 @@ const frontEndDevInstance = useMotion(frontEndDev, {
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"
-          :delay="1300"
+          :delay="500"
         />
+      </div>
+    </div>
+    <div
+      class="lg:grid flex flex-col lg:grid-cols-[429px_500px] gap-x-20 gap-y-6 justify-items-center lg:mt-56 mt-24"
+    >
+      <div class="relative w-full">
+        <img
+          v-motion
+          :src="EduCbtPreview"
+          alt="Certifast preview"
+          class="rounded-xl shadow-md w-full h-auto block lg:absolute top-0 left-0"
+          :initial="{ opacity: 0, y: -20 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :duration="300"
+          :delay="500"
+        />
+      </div>
+      <div>
+        <div
+          v-motion
+          class="md:text-4xl text-2xl font-semibold mb-5"
+          :initial="{ opacity: 0, y: -20 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :duration="300"
+          :delay="500"
+        >
+          Online exam and assessments platform
+        </div>
+        <div
+          v-motion
+          class="md:text-xl tracking-[0.02em] mb-10"
+          :initial="{ opacity: 0, y: -20 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :duration="300"
+          :delay="500"
+        >
+          EduCBT is an education platform for online exam and assesment.
+          Designed to revolutionized the way teacher and student interact.
+        </div>
+        <a
+          href="https://educbt.sidrstudio.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          v-motion
+          class="bg-black text-white md:h-16 h-12 w-[210px] md:text-xl font-semibold flex items-center justify-center gap-2"
+          :initial="{ opacity: 0, y: -20 }"
+          :visible-once="{ opacity: 1, y: 0 }"
+          :duration="300"
+          :delay="500"
+        >
+          View site
+          <ArrowRight />
+        </a>
       </div>
     </div>
   </section>

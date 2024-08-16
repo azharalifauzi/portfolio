@@ -4,19 +4,22 @@ import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
   title: string
+  description?: string
 }
 
-const { title } = Astro.props
+const {
+  title,
+  description = 'Azhar is a very talented Front End Developer with 4.5 years experience building highly scalable web app'
+} = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Azhar is a very talented Front End Developer with 4.5 years experience building highly scalable web app."
-    />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:title" content={title} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

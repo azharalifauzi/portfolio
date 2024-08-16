@@ -1,8 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import CertifastFeature from '@/features/projects/certifast.vue';
+import Layout from '@/layouts/Layout.astro'
+import CertifastFeature from '@/features/projects/certifast.vue'
 ---
 
-<Layout title="Certifast Case Study">
+<Layout
+  title="Certifast Case Study"
+  description="Certifast is a free design tool that is specifically built to generate design in bulks. Offering great user experience similar to modern design tools such as Canva and Figma."
+>
   <CertifastFeature client:only="vue" />
 </Layout>

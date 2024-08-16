@@ -139,7 +139,11 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       HISTORY
     </div>
     <div>
-      <div v-for="h in HISTORY" :key="h.title" class="relative pl-12 h-screen">
+      <div
+        v-for="(h, index) in HISTORY"
+        :key="h.title"
+        class="relative pl-12 h-screen"
+      >
         <div class="absolute top-3.5 left-0 h-full w-4">
           <div
             class="absolute top-0 left-0 w-4 h-4 bg-[#78c0fa] rounded-full"
@@ -195,6 +199,17 @@ const frontEndDevInstance = useMotion(frontEndDev, {
             {{ techStack }}
           </div>
         </div>
+        <div
+          v-if="index === HISTORY.length - 1"
+          class="absolute -bottom-4 left-0 right-0 h-80 z-10"
+          style="
+            background: linear-gradient(
+              rgba(252, 252, 252, 0),
+              rgba(252, 252, 252, 0.9),
+              rgb(252, 252, 252)
+            );
+          "
+        />
       </div>
     </div>
   </section>

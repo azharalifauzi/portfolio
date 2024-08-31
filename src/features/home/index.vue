@@ -142,7 +142,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       <div
         v-for="(h, index) in HISTORY"
         :key="h.title"
-        class="relative pl-12 h-screen"
+        class="relative pl-12 min-h-[100vh] pb-16"
       >
         <div class="absolute top-3.5 left-0 h-full w-4">
           <div

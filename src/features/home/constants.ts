@@ -2,8 +2,11 @@ export const HISTORY = [
   {
     title: 'Front End Developer (Jun 2022 - Present)',
     company: 'Piktochart',
-    description:
-      'Developed essential shape tools from scratch for a leading graphic design software, while resolving critical interaction bugs, including snap rotate, drag-and-drop functionality, page resizing, and copy-paste issues. <br /> <br /> Successfully migrated the TypeScript loader from ts-loader to swc-loader, reducing build time by 50%, from 15 minutes to 7 minutes. Additionally, revamped the Onboarding and Dashboard pages to enhance user experience and interface.',
+    description: `Developed essential shape tools from scratch for a leading graphic design software, resolving critical interaction bugs such as snap rotate, drag-and-drop functionality, page resizing, and copy-paste issues. <br /><br />
+Key contributor to the development of our AI Infographic Maker product, focusing on building core front-end functionalities. <br /><br />
+Successfully migrated the TypeScript loader from ts-loader to swc-loader, cutting build time by 50%, from 15 minutes to 7 minutes. <br /><br />
+Led the rewrite of the design system from Bootstrap-Vue (Vue 2) to a Vue 2-compatible Composition API, paving the way for a seamless migration to Vue 3, which was previously blocked by Bootstrap-Vue dependencies. <br /><br />
+Revamped the Onboarding and Dashboard pages, significantly enhancing the user experience and interface.`,
     techStacks: [
       'Vue',
       'Nuxt',

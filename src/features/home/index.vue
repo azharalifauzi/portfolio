@@ -178,7 +178,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
         </a>
         <div
           v-motion
-          class="tracking-wider leading-normal md:text-lg text-sm"
+          class="tracking-wider leading-normal md:text-base text-sm"
           :initial="{ opacity: 0, y: -20 }"
           :visible-once="{ opacity: 1, y: 0 }"
           :duration="300"

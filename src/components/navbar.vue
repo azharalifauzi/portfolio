@@ -104,7 +104,7 @@ watch(isOpen, (open) => {
         <div
           :class="[
             'w-full h-[1.5px] bg-black translate-y-1.5 rotate-0 transition-transform',
-            { '-rotate-[45deg] !translate-y-[1px]': isOpen },
+            { 'rotate-[-45deg] !translate-y-[1px]': isOpen },
           ]"
         />
         <div

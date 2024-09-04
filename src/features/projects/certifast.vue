@@ -178,7 +178,7 @@ const techStacks = [
         class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
       >
         <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/1.webm"
               type="video/webm"
@@ -210,7 +210,7 @@ const techStacks = [
           </p>
         </div>
         <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/2.webm"
               type="video/webm"
@@ -223,7 +223,7 @@ const techStacks = [
         class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
       >
         <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/3.webm"
               type="video/webm"
@@ -255,7 +255,7 @@ const techStacks = [
           </p>
         </div>
         <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/4.webm"
               type="video/webm"
@@ -268,7 +268,7 @@ const techStacks = [
         class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
       >
         <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/5.webm"
               type="video/webm"
@@ -298,7 +298,7 @@ const techStacks = [
           </p>
         </div>
         <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted>
+          <video class="bg-gray-200" autoplay loop muted playsinline>
             <source
               src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/6.webm"
               type="video/webm"

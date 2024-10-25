@@ -78,7 +78,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
             :delay="700"
             :duration="0"
           >
-            Not a Regular
+            Expert Front End
           </span>
         </div>
         <div class="relative w-max">
@@ -92,7 +92,7 @@ const frontEndDevInstance = useMotion(frontEndDev, {
             :enter="{ opacity: 1 }"
             :delay="1300"
             :duration="0"
-            >Front End Developer</span
+            >Developer & Creator</span
           >
         </div>
       </h1>
@@ -120,8 +120,8 @@ const frontEndDevInstance = useMotion(frontEndDev, {
       :duration="500"
       :delay="500"
     >
-      I’m a skilled Front End focused Developer who love to build pixel perfect
-      design with attention to coding perfection.
+      I love to build highly interactive website with clean design that deliver
+      great user experience.
     </h2>
   </section>
   <section

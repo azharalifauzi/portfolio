@@ -2,11 +2,11 @@ export const HISTORY = [
   {
     title: 'Front End Developer (Jun 2022 - Present)',
     company: 'Piktochart',
-    description: `Developed essential shape tools from scratch for a leading graphic design software, resolving critical interaction bugs such as snap rotate, drag-and-drop functionality, page resizing, and copy-paste issues. <br /><br />
-Key contributor to the development of our AI Infographic Maker product, focusing on building core front-end functionalities. <br /><br />
-Successfully migrated the TypeScript loader from ts-loader to swc-loader, cutting build time by 50%, from 15 minutes to 7 minutes. <br /><br />
-Led the rewrite of the design system from Bootstrap-Vue (Vue 2) to a Vue 2-compatible Composition API, paving the way for a seamless migration to Vue 3, which was previously blocked by Bootstrap-Vue dependencies. <br /><br />
-Revamped the Onboarding and Dashboard pages, significantly enhancing the user experience and interface.`,
+    description: `Collaborated with cross-functional teams across multiple time zones, from Southeast Asia to Europe, enhancing project coordination and communication.<br /> <br/>
+    Spearheaded the development of advanced shape tools for a leading graphic design platform, enhancing user interaction with features like snap rotate and drag-and-drop. <br /><br />
+Played a pivotal role in launching the AI Infographic Maker, boosting traffic by 210% and user sign-ups by 184%. <br /><br />
+Optimized build processes by migrating TypeScript loaders, reducing build times by over 50%. <br /><br />
+Led the transition from Bootstrap-Vue to a modern Vue 3 framework, eliminating dependencies and improving system agility. <br /><br />`,
     techStacks: [
       'Vue',
       'Nuxt',
@@ -22,7 +22,7 @@ Revamped the Onboarding and Dashboard pages, significantly enhancing the user ex
     title: 'Front End Developer (Aug 2021 - May 2022)',
     company: 'AIA Singapore',
     description:
-      'Spearheaded the development of AIA Design System v2, creating robust and reusable React components that enhanced the efficiency and consistency of our projects. Provided mentorship to interns and junior engineers, fostering a collaborative and growth-oriented environment. <br /> <br /> Maintained and enhanced POSEZ, a crucial web application for submitting service requests for clients and insurance agents, consistently delivering improvements that boosted user satisfaction and operational efficiency.',
+      'Led the creation of AIA Design System v2, delivering reusable React components that increased efficiency and design consistency. <br /> <br /> Mentored junior developers, fostering a collaborative and growth-focused engineering culture. <br/> <br/> Enhanced and maintained the POSEZ web application, streamlining client and agent service requests, significantly improving user satisfaction and operational efficiency.',
     techStacks: [
       'React',
       'Gatsby',
@@ -37,7 +37,7 @@ Revamped the Onboarding and Dashboard pages, significantly enhancing the user ex
     title: 'Front End Developer (Apr 2020 - Jul 2021)',
     company: 'PT Sirkel Kreasi Nusantara',
     description:
-      'I started work as freelance and then hired as full time developer. Successfully delivered multiple projects utilizing diverse technologies such as React, Vue, AMP, and Laravel, showcasing versatility and adaptability in different development environments. <br /> <br /> Played a key role in developing the front end of a web-based banking system app for Bank Aladin Syariah using React.js, ensuring a user-friendly and efficient interface for seamless banking experiences.',
+      'Transitioned from freelance to full-time, successfully delivering diverse projects using React, Vue, and Laravel. <br /> <br /> Key contributor to a web-based banking app, ensuring seamless, user-friendly experiences and robust performance. <br /> <br /> Showcased adaptability across various development environments, driving project success and customer satisfaction.',
     techStacks: ['HTML & CSS', 'Typescript', 'React', 'Vue', 'Ionic'],
     url: 'https://www.linkedin.com/company/sirkeli-id/?originalSubdomain=id',
   },

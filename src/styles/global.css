@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+:root {
+  --paper: #f5f1e8;
+  --ink: #171817;
+  --blue: #3984ff;
+  --acid: #d8ff3e;
+  --line: rgba(23, 24, 23, 0.16);
+}
+
+html {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 88% 6%, rgba(57, 132, 255, 0.12), transparent 23rem),
+    var(--paper);
+}
+
+::selection {
+  background: var(--blue);
+  color: white;
+}
+
+code,
+.font-mono {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.outcome-card {
+  color: var(--ink);
+}
+
+.media-frame-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.media-frame-16-10 {
+  aspect-ratio: 16 / 10;
+}

@@ -1,6 +1,7 @@
 ---
 import Navbar from '@/components/navbar.vue'
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
+import '../styles/global.css'
 
 interface Props {
   title: string
@@ -11,6 +12,9 @@ const {
   title,
   description = 'Azhar is a very talented Front End Developer with 4.5 years experience building highly scalable web app'
 } = Astro.props
+
+const canonicalUrl = Astro.url.toString()
+const ogImageUrl = new URL('/og-image.png', Astro.url).toString()
 ---
 
 <!doctype html>
@@ -18,59 +22,39 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:description" content={description} />
     <meta property="og:title" content={title} />
-    <meta
-      property="og:image"
-      content="https://avatars.githubusercontent.com/u/57862105"
-    />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="Azhar Ali Fauzi — frontend engineer portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <main>
       <Navbar client:load />
       <slot />
     </main>
+    <script is:inline>
+      document.addEventListener('astro:after-swap', () => {
+        if (!window.location.hash) window.scrollTo(0, 0)
+      })
+    </script>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-
-  html {
-    font-family: 'Figtree', system-ui, sans-serif;
-    background: #fcfcfc;
-    scroll-behavior: smooth;
-  }
-
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>

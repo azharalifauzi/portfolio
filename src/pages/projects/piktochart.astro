@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import PiktochartFeature from '@/features/projects/piktochart.vue'
+---
+
+<Layout
+  title="Piktochart Product Work"
+  description="A collection of separate Piktochart projects: AI image editor, advanced shape tools, and AI Infographic Maker."
+>
+  <PiktochartFeature client:only="vue" />
+</Layout>

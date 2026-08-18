@@ -5,6 +5,8 @@ export const HISTORY = [
     description: `Collaborated with cross-functional teams across multiple time zones, from Southeast Asia to Europe, enhancing project coordination and communication.<br /> <br/>
     Spearheaded the development of advanced shape tools for a leading graphic design platform, enhancing user interaction with features like snap rotate and drag-and-drop. <br /><br />
 Played a pivotal role in launching the AI Infographic Maker, boosting traffic by 210% and user sign-ups by 184%. <br /><br />
+Led the development of Piktochart's <a href="https://piktochart.com/generative-ai/editor/?format=image-generator" target="_blank" rel="noopener noreferrer">AI image editor</a>, integrating tools for image generation, object erasing, image upscaling, image restoration, and background removal directly into the Piktochart editor. <br /><br />
+Led Piktochart's AI-assisted development standards by establishing AGENTS.md files, reusable skills, and guided documentation for AI agents, improving developer productivity and making AI-assisted workflows more consistent across the engineering team. <br /><br />
 Optimized build processes by migrating TypeScript loaders, reducing build times by over 50%. <br /><br />
 Led the transition from Bootstrap-Vue to a modern Vue 3 framework, eliminating dependencies and improving system agility. <br /><br />`,
     techStacks: [

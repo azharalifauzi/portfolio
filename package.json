@@ -3,27 +3,28 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host 0.0.0.0",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.3",
-    "@astrojs/node": "^8.3.3",
-    "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vue": "^4.5.0",
-    "@vueuse/core": "^10.11.0",
-    "@vueuse/motion": "^2.2.3",
-    "astro": "^4.12.2",
-    "lucide-vue-next": "^0.417.0",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4",
-    "vue": "^3.4.34"
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/node": "^11.1.0",
+    "@astrojs/vue": "^7.0.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/motion": "^3.0.3",
+    "astro": "^7.2.0",
+    "lucide-vue-next": "^1.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.0",
+    "vite": "^8.2.1",
+    "vue": "^3.5.41"
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.18.0",
   "devDependencies": {
-    "sass": "^1.77.8"
+    "sass": "^1.102.0"
   }
 }

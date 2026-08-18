@@ -3,7 +3,7 @@ import { ArrowDownRight, ArrowUpRight, ExternalLink } from 'lucide-vue-next';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { HISTORY } from './constants';
 import CertifastPreview from './assets/certifast-preview.png?url';
-import PiktochartPreview from '../projects/assets/piktochart/piktochart-card.png?url';
+import PiktochartPreview from '../projects/assets/piktochart/piktochart-card.webp?url';
 
 const heroCopies = [
   { firstPrefix: 'Build', firstWord: 'sharp.', secondLine: 'Make it', word: 'move.' },

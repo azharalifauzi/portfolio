@@ -222,7 +222,7 @@ const studioContributions = [
         <div class="grid md:grid-cols-[0.18fr_0.82fr] gap-5 mb-12 md:mb-16">
           <p class="font-mono text-sm md:text-base font-medium text-[#d8ff3e]">03</p>
           <div>
-            <p class="font-mono text-sm md:text-base uppercase tracking-[0.18em] text-[#d8ff3e]">Pikto AI Studio / AI Infographic Maker</p>
+            <p class="font-mono text-sm md:text-base uppercase tracking-[0.18em] text-[#d8ff3e]">Pikto AI Visual Generator / AI Infographic Maker</p>
             <h2 class="mt-5 text-5xl md:text-7xl tracking-[-0.08em] leading-[0.84] font-semibold max-w-4xl">
               From prompt<br />to polished story.
             </h2>
@@ -242,7 +242,7 @@ const studioContributions = [
           </div>
           <div class="border border-white/45 p-6 md:p-8">
             <p class="text-lg md:text-2xl leading-snug tracking-[-0.025em]">
-              I was a core frontend contributor on selected Pikto AI Studio features, implementing the UI and integrating it with the generation logic owned by other engineers. Product and design provided the visual direction.
+              I was a core frontend contributor on selected Pikto AI Visual Generator features, implementing the UI and integrating it with the generation logic owned by other engineers. Product and design provided the visual direction.
             </p>
             <div class="mt-10 border-t border-white/35 pt-5">
               <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#d8ff3e]">Selected contributions</p>

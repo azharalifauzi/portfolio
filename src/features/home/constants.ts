@@ -5,7 +5,7 @@ export const HISTORY = [
     description: `Collaborated with cross-functional teams across multiple time zones, from Southeast Asia to Europe, enhancing project coordination and communication.<br /> <br/>
     Spearheaded the development of advanced shape tools for a leading graphic design platform, enhancing user interaction with features like snap rotate and drag-and-drop. <br /><br />
 Helped build Pikto AI Studio, where visual generations among AI Image users increased by 34% and AI App sign-ups grew by +1,000%. 73% of generated visuals were downloaded, and the Pro-to-Business upgrade rate exceeded 60% within three months. <br /><br />
-Contributed to the broader AI Infographic Maker initiative, where AI visual creation grew from 74K to 1.14M (+1,400%) and format-selector usage increased by 108%. <br /><br />
+Contributed to Pikto AI Visual Generator, the AI infographic maker initiative, where AI visual creation grew from 74K to 1.14M (+1,400%) and format-selector usage increased by 108%. <br /><br />
 Led the development of Piktochart's <a href="https://piktochart.com/generative-ai/editor/?format=image-generator" target="_blank" rel="noopener noreferrer">AI image editor</a>, integrating tools for image generation, object erasing, image upscaling, image restoration, and background removal directly into the Piktochart editor. <br /><br />
 Led Piktochart's AI-assisted development standards by establishing AGENTS.md files, reusable skills, and guided documentation for AI agents, improving developer productivity and making AI-assisted workflows more consistent across the engineering team. <br /><br />
 Optimized build processes by migrating TypeScript loaders, reducing build times by over 50%. <br /><br />

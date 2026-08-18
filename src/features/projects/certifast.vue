@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ChevronRight } from 'lucide-vue-next';
-import CertifastPrview from '@/features/home/assets/certifast-preview.png?url';
+import { ArrowLeft, ArrowUpRight } from 'lucide-vue-next';
+import CertifastPreview from '@/features/home/assets/certifast-preview.png?url';
 import ReactIcon from './assets/react.svg?url';
 import NextJsIcon from './assets/nextjs.svg?url';
 import TypescriptIcon from './assets/typescript.svg?url';
@@ -12,408 +12,252 @@ import ShadcnIcon from './assets/shadcn.svg?url';
 import WebAssemblyIcon from './assets/webassembly.png?url';
 import RustIcon from './assets/rust.svg?url';
 
+const challenges = [
+  'Create an intuitive design editor on the web, with the ease of Canva and the precision of Figma.',
+  'Render certificates in the browser to keep the service fast and operating costs low.',
+  'Archive large certificate batches quickly before download.',
+  'Support the custom fonts organisations need for their brand guidelines.',
+];
+
+const solutions = [
+  'Combined an infinite canvas and right sidebar with direct, familiar item interactions.',
+  'Used HTML Canvas to faithfully match the editor design in exported images.',
+  'Used Rust and WebAssembly to archive generated files in milliseconds.',
+  'Enabled uploads for TTF, OTF, and WOFF fonts directly in the product.',
+];
+
+const features = [
+  {
+    title: 'Intuitive item interaction',
+    description: 'Drag, resize, and rotate items to create a certificate with full control over every element.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/1.webm',
+  },
+  {
+    title: 'Simplified text editing',
+    description: 'Add, modify, and format text with focused controls that keep the workflow quick and flexible.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/2.webm',
+  },
+  {
+    title: 'Tailored customization',
+    description: 'Customize fonts and colors to create certificates that fit each organisation and its brand.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/3.webm',
+  },
+  {
+    title: 'Preview before spending',
+    description: 'Check a certificate with every customization before spending credits or finalizing the batch.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/4.webm',
+  },
+  {
+    title: 'Fast certificate generation',
+    description: 'Generate high-quality certificates in seconds with efficient, reliable browser-side processing.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/5.webm',
+  },
+  {
+    title: 'Quality service with credits',
+    description: 'A straightforward credit system gives users access to powerful design features when they need them.',
+    video: 'https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/6.webm',
+  },
+];
+
+const reviews = [
+  {
+    quote: 'Thank you bro, it is really helpful. I use it for certificates and even to number travel-coupon designs. Without Certifast, it would take days to get them ready.',
+    name: 'Muhammad Fandria Siswara',
+    avatar: 'https://assets.karyakarsa.com/avatar-63249d20c0f53.jpg',
+  },
+  {
+    quote: 'Your work is very useful. I can save a lot of time making thousands of certificates; it is the simplest, fastest, and least heavy tool I have used for the job.',
+    name: 'Qistan Wafi',
+    role: 'Designer, Indonesian Big Data Association',
+    avatar: 'https://assets.karyakarsa.com/avatar-64118f6c29dce.jpg',
+  },
+  {
+    quote: 'Very useful, Mas Azhar. With this tool we can create various certificates according to our needs. Your work is very good.',
+    name: 'Desa Kubang Baros',
+    role: 'Village office staff',
+    avatar: 'https://assets.karyakarsa.com/avatar-62b1133e41d28.jpg',
+  },
+];
+
 const techStacks = [
-  {
-    name: 'React',
-    icon: ReactIcon,
-  },
-  {
-    name: 'Next.js',
-    icon: NextJsIcon,
-  },
-  {
-    name: 'Typescript',
-    icon: TypescriptIcon,
-  },
-  {
-    name: 'Valtio',
-    icon: ValtioIcon,
-  },
-  {
-    name: 'React Moveable',
-    icon: ReactMoveableIcon,
-  },
-  {
-    name: 'React Zoom Pan Pinch',
-    icon: ReactZoomPanPinchIcon,
-  },
-  {
-    name: 'Tiptap',
-    icon: TiptapIcon,
-  },
-  {
-    name: 'shadcn/ui',
-    icon: ShadcnIcon,
-  },
-  {
-    name: 'WebAssembly',
-    icon: WebAssemblyIcon,
-  },
-  {
-    name: 'Rust',
-    icon: RustIcon,
-  },
+  { name: 'React', icon: ReactIcon },
+  { name: 'Next.js', icon: NextJsIcon },
+  { name: 'TypeScript', icon: TypescriptIcon },
+  { name: 'Valtio', icon: ValtioIcon },
+  { name: 'React Moveable', icon: ReactMoveableIcon },
+  { name: 'React Zoom Pan Pinch', icon: ReactZoomPanPinchIcon },
+  { name: 'Tiptap', icon: TiptapIcon },
+  { name: 'shadcn/ui', icon: ShadcnIcon },
+  { name: 'WebAssembly', icon: WebAssemblyIcon },
+  { name: 'Rust', icon: RustIcon },
 ];
 </script>
 
 <template>
-  <section
-    class="max-w-4xl mx-auto md:pt-32 pt-24 md:pb-20 pb-12 px-6 md:pl-24 lg:pl-6"
-  >
-    <div class="max-w-[575px]">
-      <h1
-        v-motion
-        class="md:text-[64px] text-4xl leading-[1.1] font-semibold mb-6"
-        :initial="{ opacity: 0, y: -20 }"
-        :enter="{ opacity: 1, y: 0 }"
-        :duration="300"
-      >
-        Professional Certificate Maker
-      </h1>
-      <p
-        v-motion
-        class="md:text-xl mb-6"
-        :initial="{ opacity: 0, y: -20 }"
-        :enter="{ opacity: 1, y: 0 }"
-        :duration="300"
-        :delay="300"
-      >
-        <strong> Certifast </strong>
-        is a free design tool that is specifically built to generate design in
-        bulks. I worked on this project as a sole creator from design to dev.
-      </p>
-      <a
-        v-motion
-        href="https://certifast.co"
-        class="flex items-center md:text-xl text-lg font-semibold gap-1 hover:text-blue-300 transition-colors duration-200"
-        target="_blank"
-        rel="noopener noreferrer"
-        :initial="{ opacity: 0, y: -20 }"
-        :enter="{ opacity: 1, y: 0 }"
-        :duration="300"
-        :delay="600"
-      >
-        <ChevronRight />
-        Visit website
-      </a>
-    </div>
-    <div
-      v-motion
-      class="md:mt-14 mt-8"
-      :initial="{ opacity: 0, y: -20 }"
-      :enter="{ opacity: 1, y: 0 }"
-      :duration="300"
-      :delay="900"
-    >
-      <img
-        :src="CertifastPrview"
-        alt="Certifast"
-        class="shadow-md rounded-md w-full aspect-[994/586] object-top object-cover"
-      />
-    </div>
-  </section>
-  <section class="max-w-4xl mx-auto md:py-20 py-12 px-6 md:pl-24 lg:pl-6">
-    <div class="md:mb-20 mb-12">
-      <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-        The Goal of the Project
-      </h2>
-      <p class="text-lg">
-        Our goal is to build an easy way to generate design in bulk that can be
-        accessed easily for everyone through the web, while the certificate
-        generation has to be run on client side to minimize cost.
-      </p>
-    </div>
-    <div class="md:mb-20 mb-12">
-      <h2 class="md:text-4xl text-2xl font-semibold mb-6">Main Challenges</h2>
-      <ul class="grid md:grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
-        <li>
-          We have to build a design editor with great UX on the web like Canva
-          or Figma, so it has to be very intuitive for our users to use it.
-        </li>
-        <li>
-          We have to render the certificate in browser instead of server to
-          minimize cost and have a very fast rendering process.
-        </li>
-        <li>
-          We need to archive (zip files) certificates before users download it
-          and it has to be fast.
-        </li>
-        <li>
-          Most organizations that need this kind of app will have brand
-          guidelines for their design. That’s why we should provide the ability
-          to add custom fonts.
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h2 class="md:text-4xl text-2xl font-semibold mb-6">The Solutions</h2>
-      <ul class="grid md:grid-cols-2 gap-x-14 gap-y-6 list-disc pl-6">
-        <li>
-          We picked the most essential feature from Canva and Figma and mixed
-          it. We have an infinity canvas and right sidebar like Figma while we
-          item interaction like Canva.
-        </li>
-        <li>
-          Because browsers prevent Javascript code from taking screenshots due
-          to security issues, we’re using HTML canvas and some code magic to
-          match the design that users see on the editor and the exported images.
-        </li>
-        <li>
-          We’re using Rust + WebAssembly for zipping the files, so the process
-          to archive files only takes a matter of milliseconds.
-        </li>
-        <li>
-          Our code magic allows users to upload ttf, otf, or woff files to add
-          their custom font to Certifast.
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section
-    class="md:py-40 py-20 pr-6 md:pl-24 pl-6 bg-gray-900 text-white"
-    data-inverse="true"
-  >
-    <div class="max-w-7xl mx-auto">
-      <div
-        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
-      >
-        <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/1.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
+  <main class="overflow-hidden">
+    <section class="px-4 md:px-6 pt-28 pb-16 md:pt-36 md:pb-24">
+      <div class="max-w-7xl mx-auto">
+        <a
+          href="/#project"
+          class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] hover:text-[#3984ff] transition-colors"
+        >
+          <ArrowLeft class="w-4 h-4" /> Back to selected work
+        </a>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 mt-8 md:mt-10 border-t border-black/15 font-mono text-[10px] uppercase tracking-[0.16em]">
+          <div class="py-3 border-r border-black/15">02 / Independent</div>
+          <div class="py-3 px-3 border-r border-black/15">Design + Development</div>
+          <div class="hidden md:block py-3 px-3 border-r border-black/15">2021 — Present</div>
+          <div class="col-span-2 border-t border-black/15 py-3 text-left md:col-span-1 md:border-t-0 md:px-3 md:text-right">Web product</div>
         </div>
-        <div>
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Intuitive Item interaction
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            Effortlessly drag, resize, and rotate items to create your perfect
-            certificate design. Full control over every element makes
-            customization easy.
-          </p>
+
+        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 pt-12 md:pt-20">
+          <div class="flex flex-col justify-between">
+            <div>
+              <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#3984ff]">Certifast</p>
+              <h1 class="mt-6 text-[clamp(3.25rem,13vw,5.25rem)] lg:text-[clamp(5rem,7vw,7rem)] leading-[0.86] tracking-[-0.08em] font-semibold max-w-3xl">
+                Certificates,<br />without the drag.
+              </h1>
+            </div>
+            <div class="mt-10 md:mt-14 pt-5 border-t border-black/15 max-w-xl">
+              <p class="text-base md:text-2xl leading-[1.15] tracking-[-0.025em]">
+                A browser-based design tool for producing personalised certificates in bulk—created end to end by me.
+              </p>
+              <a
+                href="https://certifast.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-7 inline-flex items-center gap-3 bg-[#171817] text-white px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] hover:bg-[#3984ff] transition-colors"
+              >
+                Visit Certifast <ArrowUpRight class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          <div class="relative bg-[#d8ff3e] p-3 md:p-6 overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-52 h-52 rounded-full border-[2rem] border-[#3984ff]"></div>
+            <div class="relative aspect-[5/4] bg-[#f5f1e8] border border-black/15 shadow-[10px_10px_0_#171817] flex items-center justify-center">
+              <img :src="CertifastPreview" alt="Certifast certificate editor" class="w-full h-full object-contain" />
+            </div>
+          </div>
         </div>
       </div>
-      <div
-        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
-      >
-        <div class="order-2 md:order-1">
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Simplified Text Editing
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            Enjoy a seamless experience adding, modifying, and formatting text
-            with advanced tools for hassle-free flexibility.
-          </p>
-        </div>
-        <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/2.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
-        </div>
-      </div>
-      <div
-        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
-      >
-        <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/3.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
-        </div>
-        <div>
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Tailored Customization
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            Customize every detail from fonts to colors. Create unique
-            certificates that reflect your style and specifications.
-          </p>
-        </div>
-      </div>
-      <div
-        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
-      >
-        <div class="order-2 md:order-1">
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Preview Before Spending
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            Use the new preview feature to see your certificate with all
-            customizations before spending credits, ensuring satisfaction before
-            finalizing.asy.
-          </p>
-        </div>
-        <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/4.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
-        </div>
-      </div>
-      <div
-        class="grid md:grid-cols-2 md:mb-44 mb-12 items-center gap-x-20 gap-y-6"
-      >
-        <div class="min-h-[300px] flex items-center">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/5.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
-        </div>
-        <div>
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Fast Certificate Generation
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            Generate high-quality certificates in seconds with efficient
-            processing for quick and reliable service every time.
-          </p>
-        </div>
-      </div>
-      <div class="grid md:grid-cols-2 items-center gap-x-20 gap-y-6">
-        <div class="order-2 md:order-1">
-          <h2 class="md:text-4xl text-2xl font-semibold mb-6">
-            Top-Quality Service with Credits
-          </h2>
-          <p class="text-gray-400 md:text-lg max-w-[500px]">
-            The new credit system offers a wide range of design features and
-            ensures high-quality service. Purchase credits easily within the
-            platform for stunning certificates.
-          </p>
-        </div>
-        <div class="min-h-[300px] flex items-center order-1">
-          <video class="bg-gray-200" autoplay loop muted playsinline>
-            <source
-              src="https://storage.sidrstudio.com/sidrstudio/assets/certifast-showcase/6.webm"
-              type="video/webm"
-            />
-            Your browser does not support Webm format.
-          </video>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="max-w-6xl mx-auto py-20 px-6 md:pl-24 lg:pl-6">
-    <h2 class="md:text-4xl text-2xl font-semibold mb-12 text-center">
-      What People Said about Certifast
-    </h2>
-    <div
-      class="grid md:grid-cols-3 grid-cols-1 max-w-full gap-x-8 gap-y-6 items-start mx-auto justify-center"
-    >
-      <div class="relative px-7 py-6 border border-gray-200">
-        <p class="mt-3 mb-4">
-          Thank you bro, it's really helpful, not only for certificates, I even
-          use it to number the travel coupon design, if there's no Certifast it
-          will take days to be ready hahah. Thank you very much, I hope it
-          continues to grow
-        </p>
-        <div class="grid gap-3 grid-cols-[auto_minmax(0,1fr)] items-center">
-          <span
-            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            ><img src="https://assets.karyakarsa.com/avatar-63249d20c0f53.jpg"
-          /></span>
-          <div><p class="font-medium text-sm">Muhammad Fandria Siswara</p></div>
-        </div>
-      </div>
-      <div class="relative px-7 py-6 border border-gray-200">
-        <p class="mt-3 mb-4">
-          Thank you very much bro, your work is very useful, I can save a lot of
-          time making thousands of certificates, in other applications or places
-          maybe you can, but only here is the simplest, fastest, and not heavy
-          at all... Appreciation and thank you very much bro, from me, the
-          designer of the Indonesian Big Data Association, your work is useful
-          for many people, I wish you success and good health always
-        </p>
-        <div class="grid gap-3 grid-cols-[auto_minmax(0,1fr)] items-center">
-          <span
-            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            ><img src="https://assets.karyakarsa.com/avatar-64118f6c29dce.jpg"
-          /></span>
+    </section>
+
+    <section class="bg-[#171817] text-[#f5f1e8] px-4 md:px-6 py-24 md:py-36">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-[0.72fr_1.28fr] gap-12 lg:gap-24">
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#d8ff3e]">The brief</p>
           <div>
-            <p class="font-medium text-sm">Qistan Wafi</p>
-            <p class="text-xs text-gray-400 mt-1">
-              Designer Asosiasi Big Data Indonesia
+            <h2 class="text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold max-w-3xl">
+              Make bulk design feel focused, not fiddly.
+            </h2>
+            <p class="mt-8 text-lg md:text-2xl leading-tight text-white/75 max-w-3xl">
+              Certifast makes batch certificate generation accessible from the browser while keeping the editing experience quick, visual, and affordable to run.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative px-7 py-6 border border-gray-200">
-        <p class="mt-3 mb-4">
-          Very useful, Mas Azhar, with this tool we can create various
-          certificates according to our needs. Your work is very good. Thank You
-        </p>
-        <div class="grid gap-3 grid-cols-[auto_minmax(0,1fr)] items-center">
-          <span
-            class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            ><img src="https://assets.karyakarsa.com/avatar-62b1133e41d28.jpg"
-          /></span>
-          <div>
-            <p class="font-medium text-sm">Desa Kubang Baros</p>
-            <p class="text-xs text-gray-400 mt-1">Staff Kantor Desa</p>
+
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 mt-20 md:mt-28">
+          <div class="border-t border-white/20 pt-5">
+            <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#d8ff3e]">Challenges</p>
+            <ol class="mt-7 space-y-5">
+              <li v-for="(challenge, index) in challenges" :key="challenge" class="grid grid-cols-[1.8rem_1fr] gap-3 text-white/75 leading-relaxed">
+                <span class="font-mono text-xs text-white/40">0{{ index + 1 }}</span>
+                <span>{{ challenge }}</span>
+              </li>
+            </ol>
+          </div>
+          <div class="border-t border-white/20 pt-5">
+            <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#d8ff3e]">Approach</p>
+            <ol class="mt-7 space-y-5">
+              <li v-for="(solution, index) in solutions" :key="solution" class="grid grid-cols-[1.8rem_1fr] gap-3 text-white/75 leading-relaxed">
+                <span class="font-mono text-xs text-white/40">0{{ index + 1 }}</span>
+                <span>{{ solution }}</span>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
-    </div>
-    <div class="flex justify-center mt-16">
-      <a
-        class="border border-gray-300 px-8 py-3 hover:bg-gray-100 transition-colors duration-400"
-        href="https://karyakarsa.com/azharalifauzi/certifast"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        See more reviews
-      </a>
-    </div>
-  </section>
-  <section class="max-w-4xl mx-auto px-6 md:py-20 py-12 md:pl-24 lg:pl-6">
-    <h2 class="md:text-4xl text-2xl font-semibold mb-10 leading-tight">
-      Secret Ingredients
-    </h2>
-    <div class="grid md:grid-cols-3 grid-cols-2 gap-6">
-      <div
-        v-for="techStack in techStacks"
-        :key="techStack.name"
-        class="flex items-center gap-3"
-      >
-        <img
-          :src="techStack.icon"
-          :alt="techStack.name"
-          :class="{
-            'mix-blend-darken': techStack.name === 'Tiptap',
-          }"
-        />
-        <span class="md:text-base text-xs">{{ techStack.name }}</span>
+    </section>
+
+    <section class="px-4 md:px-6 py-24 md:py-36">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-20">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#3984ff]">Inside the editor</p>
+            <h2 class="mt-5 text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold">Built for momentum.</h2>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-[0.15em] max-w-[16rem] text-black/55">The interaction details that make high-volume work feel lighter.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-x-5 gap-y-12 md:gap-y-16">
+          <article v-for="(feature, index) in features" :key="feature.title" class="group border-t border-black/15 pt-5">
+            <div class="flex items-start justify-between gap-5">
+              <div>
+              <p class="font-mono text-base md:text-lg font-medium uppercase tracking-[0.16em] text-[#3984ff]">0{{ index + 1 }}</p>
+                <h3 class="mt-4 text-3xl md:text-4xl leading-[0.92] tracking-[-0.06em] font-semibold">{{ feature.title }}</h3>
+              </div>
+              <div class="shrink-0 w-9 h-9 bg-[#d8ff3e] rotate-45 group-hover:rotate-0 transition-transform duration-500"></div>
+            </div>
+            <p class="mt-5 text-black/65 leading-relaxed max-w-md">{{ feature.description }}</p>
+            <div class="mt-7 overflow-hidden bg-[#171817] border border-black/15">
+              <video class="w-full aspect-[16/10] object-cover" autoplay loop muted playsinline>
+                <source :src="feature.video" type="video/webm" />
+              </video>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="max-w-4xl mx-auto px-6 pt-20 md:pl-24 lg:pl-6">
-    <h2 class="md:text-4xl text-2xl font-semibold mb-6 leading-tight">
-      The Result: Over 6 Million Certificates Generated and Counting
-    </h2>
-    <p class="md:text-xl">
-      Certifast has become widely used and quite successful. From the launch at
-      2021 until now it’s been used by 150k unique users and has around 5k
-      monthly active users with more than 6 Million certificates has been
-      generated.
-    </p>
-  </section>
-  <footer class="text-center px-6 pb-10 pt-32">
-    © 2024 Azhar Ali Fauzi. All right reserved.
-  </footer>
+    </section>
+
+    <section class="bg-[#d8ff3e] px-4 md:px-6 py-24 md:py-36">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-[0.72fr_1.28fr] gap-12 lg:gap-24">
+          <p class="font-mono text-xs uppercase tracking-[0.18em]">Words from users</p>
+          <h2 class="text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold max-w-3xl">A tool people return to.</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4 mt-12 md:mt-16">
+          <figure v-for="review in reviews" :key="review.name" class="bg-[#f5f1e8] border border-black/15 p-6 md:p-7 flex flex-col">
+            <blockquote class="text-lg leading-[1.4] tracking-[-0.02em]">“{{ review.quote }}”</blockquote>
+            <figcaption class="flex items-center gap-3 mt-10 pt-6 border-t border-black/15">
+              <img :src="review.avatar" :alt="review.name" class="w-10 h-10 rounded-full object-cover" />
+              <div>
+                <p class="font-semibold text-sm">{{ review.name }}</p>
+                <p v-if="review.role" class="font-mono text-[9px] uppercase tracking-[0.12em] text-black/55 mt-1">{{ review.role }}</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+        <a
+          class="mt-10 inline-flex items-center gap-3 bg-[#171817] text-white px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] hover:bg-[#3984ff] transition-colors"
+          href="https://karyakarsa.com/azharalifauzi/certifast"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See more reviews <ArrowUpRight class="w-4 h-4" />
+        </a>
+      </div>
+    </section>
+
+    <section class="bg-[#171817] text-[#f5f1e8] px-4 md:px-6 py-24 md:py-36">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.72fr_1.28fr] gap-12 lg:gap-24">
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#d8ff3e]">The build</p>
+        <div>
+          <h2 class="text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold">A serious browser stack.</h2>
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 mt-14">
+            <div v-for="techStack in techStacks" :key="techStack.name" class="flex items-center gap-4 border-b border-white/20 pb-4">
+              <img :src="techStack.icon" :alt="techStack.name" :class="['w-7 h-7 object-contain', { 'mix-blend-screen': techStack.name === 'Tiptap' }]" />
+              <span class="font-mono text-xs uppercase tracking-[0.14em]">{{ techStack.name }}</span>
+            </div>
+          </div>
+          <div class="mt-20 bg-[#3984ff] text-white p-7 md:p-10">
+            <p class="font-mono text-xs uppercase tracking-[0.16em] text-white/75">The result</p>
+            <h3 class="mt-5 text-4xl md:text-6xl leading-[0.88] tracking-[-0.07em] font-semibold max-w-3xl">6M+ certificates generated and counting.</h3>
+            <p class="mt-6 text-lg leading-relaxed text-white/85 max-w-2xl">Since its 2021 launch, Certifast has been used by 150k unique users, with around 5k monthly active users.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </template>

@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import vue from '@astrojs/vue';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 import node from '@astrojs/node';
 
@@ -10,15 +10,12 @@ export default defineConfig({
     vue({
       appEntrypoint: '/src/pages/_app',
     }),
-    tailwind(),
   ],
   output: 'server',
   adapter: node({
     mode: 'standalone',
   }),
   vite: {
-    ssr: {
-      noExternal: true,
-    },
+    plugins: [tailwindcss()],
   },
 });

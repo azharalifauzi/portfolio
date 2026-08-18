@@ -1,216 +1,116 @@
 <script setup lang="ts">
-import { areElementsIntersecting } from '@/utils';
-import { useEventListener, useWindowScroll, useWindowSize } from '@vueuse/core';
-import { useMotions } from '@vueuse/motion';
-import { Github } from 'lucide-vue-next';
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { useWindowScroll } from '@vueuse/core';
+import { ArrowUpRight, Github, Menu, X } from 'lucide-vue-next';
+import { nextTick, ref, watch } from 'vue';
 
-const listenToScroll = ref(false);
 const isOpen = ref(false);
-
-let inverseEls: NodeListOf<Element> | null = null;
-let observer: IntersectionObserver | null = null;
-
-const motions = useMotions();
 const { y } = useWindowScroll();
-const { height } = useWindowSize();
-
-onMounted(() => {
-  setTimeout(() => {
-    inverseEls = document.querySelectorAll('[data-inverse="true"]');
-    observer = new IntersectionObserver((entries) => {
-      listenToScroll.value = entries.some((entry) => entry.isIntersecting);
-    });
-    inverseEls.forEach((el) => {
-      observer?.observe(el);
-    });
-  }, 500);
-});
-
-onUnmounted(() => {
-  observer?.disconnect();
-});
-
-useEventListener('scroll', () => {
-  if (listenToScroll.value) {
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    navLinks.forEach((navLink) => {
-      inverseEls?.forEach((inverseEl) => {
-        const isIntersecting = areElementsIntersecting(inverseEl, navLink);
-        if (isIntersecting) {
-          navLink.setAttribute('style', 'color: white;');
-        } else {
-          navLink.setAttribute('style', '');
-        }
-      });
-    });
-  }
-});
 
 watch(isOpen, (open) => {
-  if (open) {
-    document.body.setAttribute('style', 'overflow: hidden;');
-  } else {
-    document.body.setAttribute('style', '');
-  }
+  document.body.style.overflow = open ? 'hidden' : '';
 });
+
+const scrollToSection = async (sectionId: string) => {
+  isOpen.value = false;
+
+  if (window.location.pathname !== '/') {
+    window.location.href = `/#${sectionId}`;
+    return;
+  }
+
+  await nextTick();
+  requestAnimationFrame(() => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const headerOffset = 92;
+    const top = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.history.replaceState(null, '', `/#${sectionId}`);
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+};
 </script>
 
 <template>
   <nav
-    class="md:flex hidden justify-between items-center py-12 px-6 fixed h-full flex-col"
+    :class="[
+      'fixed top-0 left-0 right-0 z-50 px-4 md:px-6 transition-all duration-300',
+      y > 12 ? 'pt-3' : 'pt-5',
+    ]"
   >
-    <ul class="flex items-center gap-12 list rotate-180">
-      <li class="font-medium">
-        <a class="nav-link" href="/#project">Project</a>
-      </li>
-      <li class="font-medium">
-        <a class="nav-link" href="/#experiences">Experiences</a>
-      </li>
-      <li class="font-medium">
-        <a class="nav-link" href="/#about">About</a>
-      </li>
-      <li>
-        <a class="rotate-90 font-bold text-xl block nav-link" href="/">AAF</a>
-      </li>
-    </ul>
-    <div>
+    <div
+      class="max-w-7xl mx-auto h-14 px-4 md:px-5 flex items-center justify-between border border-black/15 bg-[#f5f1e8]/90 backdrop-blur-md shadow-[0_8px_30px_rgba(23,24,23,0.05)]"
+    >
+      <a class="font-mono text-xs tracking-[0.18em] font-medium" href="/">
+        AAF / 2026
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.15em]">
+        <a class="nav-link" href="/#about" @click.prevent="scrollToSection('about')">About</a>
+        <a class="nav-link" href="/#experiences" @click.prevent="scrollToSection('experiences')">Experience</a>
+        <a class="nav-link" href="/#project" @click.prevent="scrollToSection('project')">Selected work</a>
+      </div>
       <a
-        class="nav-link"
+        class="hidden md:inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] nav-link"
         href="https://github.com/azharalifauzi"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Github />
+        Github <ArrowUpRight class="w-3.5 h-3.5" />
       </a>
+      <button
+        class="md:hidden inline-flex items-center justify-center w-9 h-9 border border-black/15"
+        :aria-label="isOpen ? 'Close navigation' : 'Open navigation'"
+        @click="isOpen = !isOpen"
+      >
+        <X v-if="isOpen" class="w-4 h-4" />
+        <Menu v-else class="w-4 h-4" />
+      </button>
     </div>
   </nav>
-  <nav
-    :class="[
-      'flex md:hidden items-center fixed top-0 left-0 right-0 h-16 justify-between px-6 bg-[#fafafa] z-50 transition-shadow duration-400',
-      {
-        'shadow-md': y > 0,
-      },
-    ]"
-  >
-    <a class="font-bold text-xl block" href="/">AAF</a>
-    <button
-      :style="{ WebkitTapHighlightColor: 'transparent' }"
-      class="w-7 flex items-center h-10"
-      @click="() => (isOpen = !isOpen)"
-    >
-      <div class="w-full">
-        <div
-          :class="[
-            'w-full h-[1.5px] bg-black translate-y-1.5 rotate-0 transition-transform',
-            { 'rotate-[-45deg] !translate-y-[1px]': isOpen },
-          ]"
-        />
-        <div
-          :class="[
-            'w-full h-[1.5px] bg-black -translate-y-1.5 rotate-0 transition-transform',
-            { 'rotate-[45deg] !translate-y-[-1px]': isOpen },
-          ]"
-        />
-      </div>
-    </button>
-  </nav>
-  <transition @leave="(_, done) => motions.drawer.leave(done)">
+
+  <transition name="menu">
     <div
       v-if="isOpen"
-      v-motion="'drawer'"
-      class="fixed top-16 left-0 bottom-0 right-0 z-40 bg-[#fafafa] ease-in"
-      :initial="{
-        y: -height,
-      }"
-      :enter="{
-        y: 0,
-      }"
-      :leave="{
-        y: -height,
-        transition: {
-          ease: 'easeIn',
-          type: 'keyframes',
-        },
-      }"
-      :duration="500"
+      class="fixed inset-0 z-40 bg-[#171817] text-[#f5f1e8] pt-24 px-6"
     >
-      <div
-        class="flex flex-col h-full gap-6 items-center justify-center -mt-16 text-xl"
-      >
+      <div class="max-w-7xl mx-auto flex flex-col h-full pb-10">
+        <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-[#d8ff3e]">
+          Navigation
+        </div>
+        <div class="mt-10 flex flex-col gap-3 text-5xl font-semibold tracking-[-0.06em]">
+          <a href="/#about" @click.prevent="scrollToSection('about')">About</a>
+          <a href="/#experiences" @click.prevent="scrollToSection('experiences')">Experience</a>
+          <a href="/#project" @click.prevent="scrollToSection('project')">Selected work</a>
+        </div>
         <a
-          v-motion
-          href="/#about"
-          :initial="{
-            y: -20,
-            opacity: 0,
-          }"
-          :visible="{
-            y: 0,
-            opacity: 1,
-          }"
-          :duration="300"
-          @click="isOpen = false"
-          >About
-        </a>
-        <a
-          v-motion
-          href="/#experiences"
-          :initial="{
-            y: -20,
-            opacity: 0,
-          }"
-          :visible="{
-            y: 0,
-            opacity: 1,
-          }"
-          :duration="300"
-          :delay="100"
-          @click="isOpen = false"
-        >
-          Experiences
-        </a>
-        <a
-          v-motion
-          href="/#project"
-          :initial="{
-            y: -20,
-            opacity: 0,
-          }"
-          :visible="{
-            y: 0,
-            opacity: 1,
-          }"
-          :duration="300"
-          :delay="200"
-          @click="isOpen = false"
-          >Project
-        </a>
-      </div>
-      <div>
-        <a
-          class="absolute left-1/2 -translate-x-1/2 bottom-6"
+          class="mt-auto inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-[#d8ff3e]"
           href="https://github.com/azharalifauzi"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Github />
+          <Github class="w-4 h-4" /> Github <ArrowUpRight class="w-4 h-4" />
         </a>
       </div>
     </div>
   </transition>
 </template>
-<style lang="scss" scoped>
-.list {
-  writing-mode: vertical-lr;
+
+<style scoped>
+.nav-link {
+  transition: color 180ms ease;
 }
 
-.nav-link {
-  transition: color 300ms;
+.nav-link:hover {
+  color: #3984ff;
+}
 
-  &:hover {
-    color: #78c0fa !important;
-  }
+.menu-enter-active,
+.menu-leave-active {
+  transition: opacity 240ms ease;
+}
+
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,339 +1,283 @@
 <script setup lang="ts">
-import { useMotion } from '@vueuse/motion';
+import { ArrowDownRight, ArrowUpRight, ExternalLink } from 'lucide-vue-next';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { HISTORY } from './constants';
 import CertifastPreview from './assets/certifast-preview.png?url';
-import EduCbtPreview from './assets/edu-cbt-preview.png?url';
-import { ref } from 'vue';
-import MouseScrollIndicator from './components/mouse-scroll-indicator.vue';
-import { ArrowRight, ExternalLink } from 'lucide-vue-next';
+import PiktochartPreview from '../projects/assets/piktochart/piktochart-card.png?url';
 
-const notARegular = ref<HTMLElement>();
-const frontEndDev = ref<HTMLElement>();
+const heroCopies = [
+  { firstPrefix: 'Build', firstWord: 'sharp.', secondLine: 'Make it', word: 'move.' },
+  { firstPrefix: 'Build', firstWord: 'clear.', secondLine: 'Make it', word: 'matter.' },
+  { firstPrefix: 'Build', firstWord: 'boldly.', secondLine: 'Make it', word: 'human.' },
+];
 
-const notARegularInstance = useMotion(notARegular, {
-  initial: {
-    clipPath: 'rect(0 0 100% 0)',
-  },
-  enter: {
-    clipPath: 'rect(0 100% 100% 0)',
-    transition: {
-      onComplete: () => (notARegularInstance.variant.value = 'afterVisible'),
-      duration: 600,
-    },
-  },
-  afterVisible: {
-    clipPath: 'rect(0 100% 100% 100%)',
-    transition: {
-      duration: 600,
-    },
-  },
+const activeHeroIndex = ref(0);
+const displayedHeroWord = ref('');
+const activeHeroCopy = computed(() => heroCopies[activeHeroIndex.value]);
+let typeTimer: number | undefined;
+let cycleTimer: number | undefined;
+
+const clearTypewriterTimers = () => {
+  if (typeTimer !== undefined) window.clearInterval(typeTimer);
+  if (cycleTimer !== undefined) window.clearTimeout(cycleTimer);
+};
+
+const typeHeroWord = () => {
+  clearTypewriterTimers();
+  const word = activeHeroCopy.value.word;
+  let characterIndex = 0;
+  displayedHeroWord.value = '';
+
+  typeTimer = window.setInterval(() => {
+    displayedHeroWord.value = word.slice(0, characterIndex + 1);
+    characterIndex += 1;
+
+    if (characterIndex === word.length) {
+      window.clearInterval(typeTimer);
+      typeTimer = undefined;
+      cycleTimer = window.setTimeout(() => {
+        let deleteIndex = word.length;
+        typeTimer = window.setInterval(() => {
+          displayedHeroWord.value = word.slice(0, deleteIndex - 1);
+          deleteIndex -= 1;
+
+          if (deleteIndex === 0) {
+            window.clearInterval(typeTimer);
+            typeTimer = undefined;
+            activeHeroIndex.value = (activeHeroIndex.value + 1) % heroCopies.length;
+            typeHeroWord();
+          }
+        }, 45);
+      }, 2300);
+    }
+  }, 78);
+};
+
+onMounted(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    displayedHeroWord.value = activeHeroCopy.value.word;
+    return;
+  }
+
+  typeHeroWord();
 });
 
-const frontEndDevInstance = useMotion(frontEndDev, {
-  initial: {
-    clipPath: 'rect(0 0 100% 0)',
-  },
-  enter: {
-    clipPath: 'rect(0 100% 100% 0)',
-    transition: {
-      onComplete: () => (frontEndDevInstance.variant.value = 'afterVisible'),
-      duration: 600,
-      delay: 500,
-    },
-  },
-  afterVisible: {
-    clipPath: 'rect(0 100% 100% 100%)',
-    transition: {
-      duration: 600,
-    },
-  },
-});
+onBeforeUnmount(clearTypewriterTimers);
 </script>
 
 <template>
-  <MouseScrollIndicator />
-  <section
-    class="max-w-4xl mx-auto px-6 flex flex-col h-screen justify-center md:pl-24 lg:pl-6"
-  >
-    <div class="-mt-24">
-      <div
-        v-motion
-        class="md:text-2xl text-lg tracking-[0.15em] mb-3"
-        :initial="{ opacity: 0, y: -20 }"
-        :visible-once="{ opacity: 1, y: 0 }"
-        :duration="500"
-      >
-        AZHAR ALI FAUZI
-      </div>
-      <h1 class="md:text-[64px] text-4xl leading-tight font-semibold">
-        <div class="relative w-max">
-          <div
-            ref="notARegular"
-            class="absolute h-full w-full bg-[#78c0fa] z-10"
-          />
-          <span
-            v-motion
-            :initial="{ opacity: 0 }"
-            :enter="{ opacity: 1 }"
-            :delay="700"
-            :duration="0"
-          >
-            Expert Front End
-          </span>
-        </div>
-        <div class="relative w-max">
-          <div
-            ref="frontEndDev"
-            class="absolute h-full w-full bg-[#78c0fa] z-10"
-          />
-          <span
-            v-motion
-            :initial="{ opacity: 0 }"
-            :enter="{ opacity: 1 }"
-            :delay="1300"
-            :duration="0"
-            >Developer & Creator</span
-          >
-        </div>
-      </h1>
-    </div>
-  </section>
-  <section
-    id="about"
-    class="max-w-4xl mx-auto px-6 pt-20 md:h-[calc(100vh-80px)] h-[60vh] md:pl-24 lg:pl-6"
-  >
-    <div
-      v-motion
-      class="md:text-2xl text-lg tracking-[0.15em] mb-3"
-      :initial="{ opacity: 0, y: -70 }"
-      :visible-once="{ opacity: 1, y: 0 }"
-      :duration="500"
-      :delay="200"
+  <main class="overflow-hidden">
+    <section
+      id="about"
+      class="min-h-screen pt-32 pb-10 px-4 md:px-6 flex flex-col scroll-mt-32 md:scroll-mt-28"
     >
-      ABOUT ME
-    </div>
-    <h2
-      v-motion
-      class="md:text-[56px] text-3xl leading-tight font-semibold"
-      :initial="{ opacity: 0, y: -20 }"
-      :visible-once="{ opacity: 1, y: 0 }"
-      :duration="500"
-      :delay="500"
-    >
-      I love to build highly interactive website with clean design that deliver
-      great user experience.
-    </h2>
-  </section>
-  <section
-    id="experiences"
-    class="max-w-4xl mx-auto px-6 md:pl-24 lg:pl-6 py-32"
-  >
-    <div
-      v-motion
-      class="md:text-2xl text-lg tracking-[0.15em] md:mb-12 mb-6"
-      :initial="{ opacity: 0, y: -70 }"
-      :visible-once="{ opacity: 1, y: 0 }"
-      :duration="500"
-      :delay="200"
-    >
-      HISTORY
-    </div>
-    <div>
-      <div
-        v-for="(h, index) in HISTORY"
-        :key="h.title"
-        class="relative pl-12 min-h-[100vh] pb-16"
-      >
-        <div class="absolute top-3.5 left-0 h-full w-4">
-          <div
-            class="absolute top-0 left-0 w-4 h-4 bg-[#78c0fa] rounded-full"
-          />
-          <div
-            class="absolute w-0.5 bg-[#78c0fa] h-full left-1/2 -translate-x-1/2"
-          ></div>
+      <div class="max-w-7xl mx-auto w-full flex flex-col flex-1">
+        <div class="grid grid-cols-2 md:grid-cols-4 border-t border-black/15 font-mono text-[10px] uppercase tracking-[0.16em]">
+          <div class="py-3 border-r border-black/15">001 / Intro</div>
+          <div class="py-3 px-3 border-r border-black/15">Frontend engineer</div>
+          <div class="hidden md:block py-3 px-3 border-r border-black/15">Product builder</div>
+          <div class="col-span-2 border-t border-black/15 py-3 text-left md:col-span-1 md:border-t-0 md:px-3 md:text-right">Indonesia ↗ global</div>
         </div>
-        <div
-          v-motion
-          class="md:text-4xl text-2xl font-semibold mb-2.5"
-          :initial="{ opacity: 0, y: -30 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          {{ h.title }}
-        </div>
-        <a
-          v-motion
-          class="md:text-xl tracking-[0.12em] md:mb-8 mb-4 flex items-center gap-2 hover:text-[#78c0fa]"
-          target="_blank"
-          rel="noopener noreferrer"
-          :href="h.url"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          {{ h.company }}
-          <ExternalLink class="h-5 w-5" />
-        </a>
-        <div
-          v-motion
-          class="tracking-wider leading-normal md:text-base text-sm"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-          v-html="h.description"
-        />
-        <div class="flex items-center gap-3 mt-6 flex-wrap">
-          <div
-            v-motion
-            v-for="(techStack, i) in h.techStacks"
-            :key="techStack"
-            class="py-1 px-4 bg-gray-100 rounded-full md:text-sm text-xs text-gray-800"
-            :initial="{ opacity: 0, y: -20 }"
-            :visible-once="{ opacity: 1, y: 0 }"
-            :duration="300"
-            :delay="500 + i * 50"
-          >
-            {{ techStack }}
+
+        <div class="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] gap-8 lg:gap-16 pt-14 md:pt-24 flex-1">
+          <div class="flex flex-col justify-between">
+            <p class="mb-8 font-mono text-sm md:text-base lg:text-xl font-medium uppercase tracking-[0.18em] text-[#3984ff]">
+              Azhar Ali Fauzi
+            </p>
+            <h1 class="text-[14vw] lg:text-[7.5rem] leading-[0.82] tracking-[-0.09em] font-semibold max-w-5xl mt-12 lg:mt-0">
+              {{ activeHeroCopy.firstPrefix }} <span class="text-[#3984ff]">{{ activeHeroCopy.firstWord }}</span><br />
+              <span class="whitespace-nowrap">{{ activeHeroCopy.secondLine }} <span class="hero-typewriter text-[#3984ff]">{{ displayedHeroWord }}</span></span>
+            </h1>
+            <div class="mt-16 md:mt-24 grid sm:grid-cols-[1fr_auto] gap-6 items-end border-t border-black/15 pt-5">
+              <p class="max-w-md text-lg md:text-2xl leading-tight tracking-[-0.03em]">
+                I make expressive, reliable interfaces for complex products—from
+                creative tools to AI-assisted workflows.
+              </p>
+              <a
+                href="/#project"
+                class="group inline-flex items-center justify-between gap-8 bg-[#171817] text-[#f5f1e8] px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] hover:bg-[#3984ff] transition-colors"
+              >
+                See selected work
+                <ArrowDownRight class="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+
+          <div class="relative min-h-[25rem] lg:min-h-0 bg-[#3984ff] p-5 md:p-7 flex flex-col justify-between overflow-hidden">
+            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-white/80">Now building</div>
+            <div class="relative z-10">
+              <p class="text-4xl md:text-5xl leading-[0.92] tracking-[-0.07em] font-semibold text-white max-w-xs">
+                AI products that feel human.
+              </p>
+              <p class="mt-6 font-mono text-[11px] uppercase tracking-[0.14em] text-white/80 max-w-[15rem]">
+                Product systems · Creative tools · Thoughtful motion
+              </p>
+            </div>
+            <div class="absolute -right-32 -bottom-52 h-72 w-72 rounded-full border-[32px] border-[#d8ff3e] md:-right-12 md:-bottom-20"></div>
+            <div class="absolute right-8 top-20 h-14 w-14 bg-[#171817] rotate-45"></div>
           </div>
         </div>
-        <div
-          v-if="index === HISTORY.length - 1"
-          class="absolute -bottom-4 left-0 right-0 h-80 z-10"
-          style="
-            background: linear-gradient(
-              rgba(252, 252, 252, 0),
-              rgba(252, 252, 252, 0.9),
-              rgb(252, 252, 252)
-            );
-          "
-        />
+      </div>
+    </section>
+
+    <div class="border-y border-black/15 bg-[#d8ff3e]">
+      <div class="px-4 py-3 text-center font-mono text-[10px] leading-relaxed uppercase tracking-[0.14em] md:px-6 md:text-left md:text-xs md:leading-normal md:tracking-[0.16em] md:whitespace-nowrap md:animate-[pulse_5s_ease-in-out_infinite] lg:px-8">
+        <span class="md:hidden">AI-powered products · Creative tooling · Frontend systems · Interaction design</span>
+        <span class="hidden md:inline">AI-powered products · Creative tooling · Frontend systems · Interaction design · AI-powered products · Creative tooling · Frontend systems · Interaction design ·</span>
       </div>
     </div>
-  </section>
-  <section
-    id="project"
-    class="max-w-4xl mx-auto px-6 md:pl-24 lg:pl-6 md:py-32 py-14"
-  >
-    <div
-      v-motion
-      class="md:text-2xl text-lg tracking-[0.15em] md:mb-8 mb-6"
-      :initial="{ opacity: 0, y: -70 }"
-      :visible-once="{ opacity: 1, y: 0 }"
-      :duration="500"
-      :delay="200"
-    >
-      PROJECT
-    </div>
-    <div
-      class="lg:grid flex flex-col lg:grid-cols-[500px_429px] gap-x-20 gap-y-6 justify-items-center"
-    >
-      <div class="order-2 lg:order-1">
-        <div
-          v-motion
-          class="md:text-4xl text-2xl font-semibold mb-5"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          Professional certificate maker
+
+    <section id="experiences" class="bg-[#171817] text-[#f5f1e8] px-4 md:px-6 py-24 md:py-36 scroll-mt-32 md:scroll-mt-28">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-20">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#d8ff3e]">002 / Experience</p>
+            <h2 class="mt-5 text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold max-w-2xl">
+              Product thinking,<br />pixel precision.
+            </h2>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-[0.15em] text-white/55 max-w-[15rem]">
+            Building clear paths through complex problems since 2020.
+          </p>
         </div>
-        <div
-          v-motion
-          class="md:text-xl tracking-[0.02em] mb-10"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          Certifast is a free design tool that is specifically built to generate
-          design in bulks. Offering great user experience similar to modern
-          design tools such as Canva and Figma.
+
+        <div class="border-t border-white/20">
+          <article
+            v-for="(history, index) in HISTORY"
+            :key="history.title"
+            class="group grid lg:grid-cols-[0.1fr_0.35fr_0.55fr] gap-5 lg:gap-8 py-8 md:py-11 border-b border-white/20 hover:bg-white/[0.04] transition-colors"
+          >
+            <div class="font-mono text-xs text-[#d8ff3e]">0{{ index + 1 }}</div>
+            <div>
+              <a
+                :href="history.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-3xl md:text-4xl leading-none tracking-[-0.065em] font-semibold group-hover:text-[#d8ff3e] transition-colors"
+              >
+                {{ history.company }} <ExternalLink class="w-5 h-5 md:w-6 md:h-6" />
+              </a>
+              <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">
+                {{ history.title }}
+              </p>
+            </div>
+            <div>
+              <div class="max-w-2xl text-sm md:text-base leading-relaxed text-white/70" v-html="history.description" />
+              <div class="flex flex-wrap gap-2 mt-6">
+                <span
+                  v-for="techStack in history.techStacks"
+                  :key="techStack"
+                  class="font-mono text-[10px] uppercase tracking-[0.12em] border border-white/20 px-2.5 py-1.5 text-white/70"
+                >
+                  {{ techStack }}
+                </span>
+              </div>
+            </div>
+          </article>
         </div>
-        <a
-          href="/projects/certifast"
-          v-motion
-          class="bg-black text-white md:h-16 h-12 w-[210px] md:text-xl font-semibold flex items-center justify-center gap-2"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          View project
-          <ArrowRight />
-        </a>
       </div>
-      <div class="relative w-full order-1">
-        <img
-          v-motion
-          :src="CertifastPreview"
-          alt="Certifast preview"
-          class="rounded-xl shadow-md w-full h-auto block lg:absolute top-0 left-0"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        />
-      </div>
-    </div>
-    <div
-      class="lg:grid flex flex-col lg:grid-cols-[429px_500px] gap-x-20 gap-y-6 justify-items-center lg:mt-56 mt-24"
-    >
-      <div class="relative w-full">
-        <img
-          v-motion
-          :src="EduCbtPreview"
-          alt="Certifast preview"
-          class="rounded-xl shadow-md w-full h-auto block lg:absolute top-0 left-0"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        />
-      </div>
-      <div>
-        <div
-          v-motion
-          class="md:text-4xl text-2xl font-semibold mb-5"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          Online exam and assessments platform
+    </section>
+
+    <section id="project" class="px-4 md:px-6 py-24 md:py-36 scroll-mt-32 md:scroll-mt-28">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-20">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-[0.18em] text-[#3984ff]">003 / Selected work</p>
+            <h2 class="mt-5 text-5xl md:text-7xl tracking-[-0.08em] leading-[0.86] font-semibold">
+              Work with<br />a point of view.
+            </h2>
+          </div>
+          <p class="font-mono text-xs uppercase tracking-[0.15em] max-w-[16rem] text-black/55">
+            A mix of professional product work and independent experiments.
+          </p>
         </div>
-        <div
-          v-motion
-          class="md:text-xl tracking-[0.02em] mb-10"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          EduCBT is an education platform for online exam and assesment.
-          Designed to revolutionized the way teacher and student interact.
+
+        <div class="grid lg:grid-cols-2 gap-5">
+          <a
+            href="/projects/piktochart"
+            class="group block border border-black/15 bg-white p-6 md:p-8 min-h-[34rem] md:min-h-[40rem] hover:-translate-y-1 transition-transform"
+          >
+            <div class="relative overflow-hidden bg-[#3984ff] aspect-[16/10] border border-black/10">
+              <img
+                :src="PiktochartPreview"
+                alt="Piktochart editor preview"
+                class="w-full h-full object-contain bg-[#f5f1e8] group-hover:scale-[1.03] transition-transform duration-500"
+              />
+            </div>
+            <div class="mt-8 md:mt-9">
+              <div class="flex items-start justify-between gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em]">
+                <span>Piktochart / 01</span>
+                <span class="border border-black/25 px-2 py-1">Professional work</span>
+              </div>
+              <p class="mt-6 font-mono text-[10px] md:text-xs uppercase tracking-[0.14em] text-black/55">AI image editor · Shape tools · AI infographic maker</p>
+              <div class="mt-4 flex items-end justify-between gap-4">
+                <h3 class="text-5xl md:text-6xl leading-[0.86] tracking-[-0.08em] font-semibold">Creative tools<br />for the <span class="text-[#3984ff]">next</span> move.</h3>
+                <ArrowUpRight class="w-6 h-6 shrink-0 group-hover:text-[#3984ff] transition-colors" />
+              </div>
+            </div>
+          </a>
+
+          <a href="/projects/certifast" class="group block border border-black/15 bg-white p-6 md:p-8 min-h-[34rem] md:min-h-[40rem] hover:-translate-y-1 transition-transform">
+            <div class="flex items-start justify-between gap-4 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em]">
+              <span>Certifast / 02</span>
+              <span class="border border-black/25 px-2 py-1">Independent product</span>
+            </div>
+            <div class="mt-8 md:mt-9 overflow-hidden bg-[#f3efe5] aspect-[16/10] border border-black/10">
+              <img
+                :src="CertifastPreview"
+                alt="Certifast preview"
+                class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+              />
+            </div>
+            <div class="mt-9 md:mt-10">
+              <p class="font-mono text-[10px] md:text-xs uppercase tracking-[0.14em] text-black/55">A browser-based editor for generating certificates at scale.</p>
+              <div class="mt-4 flex items-end justify-between gap-4">
+                <h3 class="text-5xl md:text-6xl leading-none tracking-[-0.08em] font-semibold">Certifast</h3>
+                <ArrowUpRight class="w-6 h-6 shrink-0 group-hover:text-[#3984ff] transition-colors" />
+              </div>
+            </div>
+          </a>
         </div>
-        <a
-          href="https://educbt.sidrstudio.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          v-motion
-          class="bg-black text-white md:h-16 h-12 w-[210px] md:text-xl font-semibold flex items-center justify-center gap-2"
-          :initial="{ opacity: 0, y: -20 }"
-          :visible-once="{ opacity: 1, y: 0 }"
-          :duration="300"
-          :delay="500"
-        >
-          View site
-          <ArrowRight />
-        </a>
       </div>
-    </div>
-  </section>
-  <footer class="text-center px-6 pb-10 pt-32">
-    © 2024 Azhar Ali Fauzi. All right reserved.
-  </footer>
+    </section>
+
+    <footer class="bg-[#d8ff3e] px-4 md:px-6 pt-20 md:pt-28 pb-6">
+      <div class="max-w-7xl mx-auto">
+        <p class="font-mono text-xs uppercase tracking-[0.18em]">004 / Let’s connect</p>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-10 mt-8">
+          <h2 class="text-5xl md:text-8xl leading-[0.82] tracking-[-0.09em] font-semibold max-w-4xl">
+            Have a tricky product problem?
+          </h2>
+          <a
+            href="https://github.com/azharalifauzi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-[#171817] text-white px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] hover:bg-[#3984ff] transition-colors"
+          >
+            Find me on Github <ArrowUpRight class="w-4 h-4" />
+          </a>
+        </div>
+        <div class="border-t border-black/20 mt-20 pt-5 flex flex-col md:flex-row gap-2 justify-between font-mono text-[10px] uppercase tracking-[0.14em]">
+          <span>© 2026 Azhar Ali Fauzi</span>
+          <span>Made with intent in Indonesia</span>
+        </div>
+      </div>
+    </footer>
+  </main>
 </template>
+
+<style scoped>
+.hero-typewriter {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-right: 0.06em solid currentColor;
+  padding-right: 0.06em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-typewriter {
+    border-right: 0;
+  }
+}
+</style>

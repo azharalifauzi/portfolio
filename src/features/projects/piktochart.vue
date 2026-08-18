@@ -150,8 +150,8 @@ const studioContributions = [
           </div>
           <div class="outcome-card bg-[#d8ff3e] p-6 md:p-8">
             <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#171817]">Outcome</p>
-            <p class="mt-6 text-2xl md:text-3xl leading-tight tracking-[-0.04em] font-semibold text-[#171817]">Enabled the successful launch of Pikto AI Studio, which received strong Product Hunt feedback and became one of Piktochart’s main product selling points.</p>
-            <p class="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#171817]">Approx. #4 on Product Hunt</p>
+            <p class="mt-6 text-2xl md:text-3xl leading-tight tracking-[-0.04em] font-semibold text-[#171817]">Enabled the successful launch of Pikto AI Studio, which received strong Product Hunt feedback and became one of Piktochart’s main product selling points. The broader launch increased visual generations among AI Image users by 34% and AI App sign-ups by +1,000%.</p>
+            <p class="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#171817]">Approx. #4 on Product Hunt · 73% of generated visuals downloaded</p>
           </div>
         </div>
       </div>
@@ -266,7 +266,8 @@ const studioContributions = [
           </div>
           <div class="outcome-card bg-[#d8ff3e] p-6 md:p-8">
             <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#171817]">Outcome</p>
-            <p class="mt-5 text-2xl md:text-3xl leading-tight tracking-[-0.04em] font-semibold text-[#171817]">Built Adaptive Block in response to strong user demand and as a high-priority feature, contributing to the AI Infographic Editor’s strong traffic growth during the early AI-product wave.</p>
+            <p class="mt-5 text-2xl md:text-3xl leading-tight tracking-[-0.04em] font-semibold text-[#171817]">Built Adaptive Block in response to strong user demand and as a high-priority feature. Across the broader AI Visual Generator initiative, AI visual creation grew from 74K to 1.14M (+1,400%), average year-over-year sign-ups rose by 90%, and format-selector usage increased by 108%.</p>
+            <p class="mt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#171817]">Instruction field adoption: 61% within two months</p>
           </div>
         </div>
       </div>

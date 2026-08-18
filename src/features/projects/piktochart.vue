@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import aiImageEditorMedia from './assets/piktochart/ai-image-editor.png?url';
-import aiInfographicEditorMedia from './assets/piktochart/ai-infographic-editor.png?url';
+import aiImageEditorMedia from './assets/piktochart/ai-image-editor.webp?url';
+import aiInfographicEditorMedia from './assets/piktochart/ai-infographic-editor.webp?url';
 import shapeToolsDemo from './assets/piktochart/shape-tools-demo.webm?url';
 
 const aiImageEditorChallenges = [

@@ -1,5 +1,5 @@
-# Use the official Node.js 20 image
-FROM node:20-alpine AS base
+# Use the official Node.js 22 image required by the current Astro release
+FROM node:22-alpine AS base
 
 # Enable corepack globally
 RUN corepack enable
@@ -27,10 +27,11 @@ COPY . .
 # Run build
 RUN yarn build
 
-# Copy production dependencies and source code into final image
+# Copy runtime dependencies and the built server into the final image
 FROM base AS release
 
-# Copy built application and node_modules
+# The Astro Node adapter keeps some dependencies external at runtime.
+COPY --from=install /temp/dev/node_modules /usr/src/app/node_modules
 COPY --from=prerelease /usr/src/app/dist /usr/src/app/
 
 # Change ownership of the application folder to the non-root user
